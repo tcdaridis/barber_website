@@ -32,6 +32,10 @@
             scroll-behavior: smooth;
         }
         
+        html, body {
+            overflow-x: hidden;
+        }
+        
         body {
             background-color: var(--primary-bg);
             color: var(--text);
@@ -154,11 +158,11 @@
         
         @media (max-width: 768px) {
             .hamburger {
-                display: flex;
+                display: flex !important;
             }
             
             .desktop-menu {
-                display: none;
+                display: none !important;
             }
         }
         
@@ -172,6 +176,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
         }
         
         .hero::before {
@@ -207,19 +217,13 @@
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
         
-        @media (min-width: 1024px) {
+        @media (max-width: 768px) {
             .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
             }
         }
         
@@ -250,6 +254,18 @@
             transition: all 0.3s ease;
             text-align: center;
         }
+
+        @media (max-width: 768px) {
+            .service-card {
+                padding: 0.75rem;
+            }
+            .service-card h3 {
+                font-size: 0.85rem;
+            }
+            .service-card p {
+                font-size: 0.5rem;
+            }
+        }
         
         .service-card:hover {
             border-color: var(--accent);
@@ -258,7 +274,7 @@
         }
         
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
         
@@ -275,10 +291,21 @@
             gap: 3rem;
             align-items: center;
         }
-        
+
+        .about-heading {
+            font-size: 1.75rem;
+        }
+
         @media (max-width: 768px) {
             .about-section {
-                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .about-section p {
+                font-size: 0.45rem;
+                line-height: 1.4;
+            }
+            .about-heading {
+                font-size: 0.55rem;
             }
         }
         
@@ -335,7 +362,7 @@
         
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
         
@@ -394,6 +421,28 @@
         img[loading="lazy"] {
             background-color: var(--secondary-bg);
         }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 1rem !important;
+            }
+            footer h4 {
+                font-size: 0.75rem !important;
+            }
+            footer h5 {
+                font-size: 0.55rem !important;
+            }
+            footer p,
+            footer a {
+                font-size: 0.5rem !important;
+            }
+            footer .gap-6 {
+                gap: 0.5rem;
+            }
+            footer .gap-2 {
+                gap: 0.25rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -407,7 +456,7 @@
                 </a>
                 
                 <!-- Desktop Menu -->
-                <div class="desktop-menu flex gap-8">
+                <div class="desktop-menu hidden md:flex gap-8">
                     <a href="#home" class="nav-link">Αρχική</a>
                     <a href="#services" class="nav-link">Υπηρεσίες</a>
                     <a href="#about" class="nav-link">Σχετικά</a>
@@ -421,7 +470,7 @@
                 </a>
                 
                 <!-- Hamburger Menu -->
-                <div class="hamburger" id="hamburger">
+                <div class="hamburger md:hidden" id="hamburger">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -458,46 +507,46 @@
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title">Υπηρεσίες μας</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-3 gap-3 sm:gap-6">
                 <!-- Service Card 1 -->
                 <div class="service-card">
                     <h3>Κλασικό Κούρεμα</h3>
-                    <p class="mt-2 text-gray-400">Ακρίβεια στο κούρεμα και στο στυλ προσαρμοσμένο στις προτιμήσεις σας.</p>
+                    <p class="mt-2 text-gray-400 text-xs">Ακρίβεια στο κούρεμα και στο στυλ προσαρμοσμένο στις προτιμήσεις σας.</p>
                     <div class="service-price"></div>
                 </div>
                 
                 <!-- Service Card 2 -->
                 <div class="service-card">
                     <h3>Τριμάρισμα Γενειάδας</h3>
-                    <p class="mt-2 text-gray-400">Επαγγελματικό τριμάρισμα γενειάδας με ακρίβεια στις λεπτομέρειες.</p>
+                    <p class="mt-2 text-gray-400 text-xs">Επαγγελματικό τριμάρισμα γενειάδας με ακρίβεια στις λεπτομέρειες.</p>
                     <div class="service-price"></div>
                 </div>
                 
                 <!-- Service Card 3 -->
                 <div class="service-card">
                     <h3>Ξύρισμα με φαλτσέτα & Ζεστές-Κρύες Κομπρέσες</h3>
-                    <p class="mt-2 text-gray-400">Πλήρης υπηρεσία περιποίησης για ανανέωση του στυλ σας.</p>
+                    <p class="mt-2 text-gray-400 text-xs">Πλήρης υπηρεσία περιποίησης για ανανέωση του στυλ σας.</p>
                     <div class="service-price"></div>
                 </div>
                 
                 <!-- Service Card 4 -->
                 <div class="service-card">
                     <h3>Παιδικό Κούρεμα</h3>
-                    <p class="mt-2 text-gray-400">Επαγγελματικά κουρέματα για παιδιά σε φιλικό περιβάλλον.</p>
+                    <p class="mt-2 text-gray-400 text-xs">Επαγγελματικά κουρέματα για παιδιά σε φιλικό περιβάλλον.</p>
                     <div class="service-price"></div>
                 </div>
                 
                 <!-- Service Card 5 -->
                 <div class="service-card">
                     <h3>Ξύρισμα με ζεστή πετσέτα</h3>
-                    <p class="mt-2 text-gray-400">Παραδοσιακό ξύρισμα με ζεστή πετσέτα για απόλυτη άνεση.</p>
+                    <p class="mt-2 text-gray-400 text-xs">Παραδοσιακό ξύρισμα με ζεστή πετσέτα για απόλυτη άνεση.</p>
                     <div class="service-price"></div>
                 </div>
                 
                 <!-- Service Card 6 -->
                 <div class="service-card">
                     <h3>Αξεσουάρ</h3>
-                    <p class="mt-2 text-gray-400">Αξεσουάρ για την περιποίηση και το στυλ σας.</p>
+                    <p class="mt-2 text-gray-400 text-xs">Αξεσουάρ για την περιποίηση και το στυλ σας.</p>
                     <div class="service-price"></div>
                 </div>
             </div>
@@ -511,7 +560,7 @@
             
             <div class="about-section mt-12">
                 <div>
-                    <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Η Ιστορία μας</h3>
+                    <h3 style="margin-bottom: 1.5rem;" class="about-heading">Η Ιστορία μας</h3>
                     <p class="text-gray-400 leading-relaxed mb-4">
                         Γεια σας, είμαι ο Στέφανος.
 
@@ -629,7 +678,7 @@
     <!-- Footer -->
     <footer style="background-color: var(--primary-bg); border-top: 1px solid rgba(200, 169, 106, 0.1); padding: 2rem;">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 text-center md:text-left">
+            <div class="grid grid-cols-3 gap-6 mb-6 text-left">
                 <div>
                     <h4 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem;" class="accent-color">
                         Doumpou
